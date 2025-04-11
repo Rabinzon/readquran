@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: learn_quran_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: learn_quran_db
+    ports:
+      - '5432:5432'
+    volumes:
+      - learn_quran_db_data:/var/lib/postgresql/data
+      # - ./backup.sql:/docker-entrypoint-initdb.d/backup.sql
+    restart: unless-stopped
+
+volumes:
+  learn_quran_db_data:

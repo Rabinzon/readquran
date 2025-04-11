@@ -1,0 +1,30 @@
+extends layout
+
+block content
+  section
+    hgroup
+      h1 Перевод Корана
+      p на русский язык
+
+    blockquote
+      | Мы&nbsp;облегчили Коран для поминания. Но&nbsp;есть&nbsp;ли среди вас вспоминающие?
+      footer
+        cite Сура&nbsp;54, 17-й аят
+
+  section
+    nav
+      ul
+        li
+          a.contrast(href='#')
+            mark Суры
+        li
+          a.contrast(href='/ср') Хронология
+
+
+    div(style="columns: 300px;")
+      each item in chapters
+        a(href="/chapter/"+item.id).chapter
+          article
+            div.chapter__number
+              span=item.id
+            p=item.name

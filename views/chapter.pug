@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  .verses
+    section
+      hgroup
+        h1=chapter_name
+        p=translation_author
+
+    section
+        nav
+          ul
+            li
+              a.contrast(href='#')
+                mark Кулиев
+            li
+              a.contrast(href='/ср') Крачковский
+        each item in verses
+          p
+            mark: a(href="/"): small=`${item.chapter_id}:${item.position}`
+            span=` ${item.text}`
+

@@ -1,0 +1,56 @@
+# .mise.toml
+
+[tools]
+node = '23'
+
+# Define environment variables (optional, if needed)
+[env]
+_.file = ".env"
+
+# Task definitions
+[tasks]
+
+# Task: install
+[tasks.install]
+run = "npm install"
+description = "Install dependencies"
+
+# Task: start
+[tasks.start]
+run = "npm run start"
+description = "Start the application"
+
+# Task: docker/up
+[tasks.docker_up]
+run = "docker-compose up -d"
+description = "Start Docker containers in detached mode"
+
+# Task: docker/down
+[tasks.docker_down]
+run = "docker-compose down"
+description = "Stop Docker containers"
+
+# Task: docker/drop
+[tasks.docker_drop]
+run = "docker-compose down --volumes"
+description = "Stop Docker containers and remove volumes"
+
+# Task: migration/up
+[tasks.migration_up]
+run = "npm run node-pg-migrate up"
+description = "Run database migrations up"
+
+# Task: migration/down
+[tasks.migration_down]
+run = "npm run node-pg-migrate down"
+description = "Rollback database migrations"
+
+# Task: migration/redo
+[tasks.migration_redo]
+run = "npm run node-pg-migrate redo"
+description = "Redo database migrations"
+
+# Task: migration/create
+[tasks.migration_create]
+run = "npm run node-pg-migrate create -j=sql"
+description = "Create a new database migration with SQL format"

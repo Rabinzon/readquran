@@ -6,4 +6,11 @@ const config = parse(process.env.DATABASE_URL);
 
 const pool = new Pool(config);
 
-module.exports = pool;
+module.exports = {
+  ...pool,
+  query: async (text, params) => {
+    const { rows } = await pool.query(text, params);
+
+    return rows;
+  },
+};

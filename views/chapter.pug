@@ -1,22 +1,29 @@
-extends layout
+extends ./layouts/application.pug
 
 block content
-  .verses
-    section
-      hgroup
-        h1=chapter_name
-        p=translation_author
+  .row.justify-content-md-center
+    .col-md-8.col-sm-12
+      .my-3
+        h1(style="word-break: break-all;").mb-0: small= 'Сура ' + chapter.id + ' «' + chapter.name + '»'
+        small: i хронолоческий порядок суры &nbsp;
+          !=chapter.chronological_order
+      p.lead=translation.author
 
-    section
-        nav
-          ul
-            li
-              a.contrast(href='#')
-                mark Кулиев
-            li
-              a.contrast(href='/ср') Крачковский
-        each item in verses
-          p
-            mark: a(href="/"): small=`${item.chapter_id}:${item.position}`
-            span=` ${item.text}`
-
+  .row
+    .col-md-8.col-sm-12.m-auto
+      each verse in verses || []
+        p.ayat(id='ayat-' + verse.position)
+          a(href=`/${verse.chapter_id}:${verse.position}`): span.badge.text-bg-secondary=verse.chapter_id + ':' + verse.position
+          span
+            | &nbsp;
+            =verse.text
+    nav.pt-4
+      ul.pagination.d-flex.justify-content-center
+          if chapter.id > 1
+            li.page-item: a.page-link(href=`/${chapter.id-1}`)
+              | &laquo;
+              =` сура ${chapter.id-1}`
+          if chapter.id < 114
+            li.page-item: a.page-link(href=`/${chapter.id+1}`)
+                =`сура ${chapter.id+1} `
+                | &raquo;

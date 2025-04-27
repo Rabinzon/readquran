@@ -5,7 +5,6 @@ const router = express.Router();
 
 /* GET search page. */
 router.get("/search", async (req, res) => {
-  console.log("query", req.query.query);
   const verses = await db.query(
     `
       select id, text, position, translation_id, chapter_id from verse
@@ -20,6 +19,49 @@ router.get("/search", async (req, res) => {
     verses,
   });
 });
+
+/* GET topics page. */
+router.get("/topic", async (req, res) => {
+  const topics = await db.query(
+    `
+      select id, name, created_at from topic
+      order by created_at desc;
+    `,
+  );
+
+  res.render("topics", {
+    topics,
+  });
+});
+
+/* GET topic page. */
+router.get("/topic/:topicId", async (req, res) => {
+  const topicId = Number(req.params.topicId);
+  const [topic] = await db.query(`select id, name from topic where id = $1`, [topicId]);
+  const verses = await db.query(
+    `
+      select v.id, v.text, v.chapter_id, v.created_at, v.position from topic_verse tv
+      join verse v on v.id = tv.verse_id
+      where tv.topic_id = $1 and v.translation_id = $2
+      order by v.chapter_id asc, v.position asc;
+    `,
+    [topicId, req.translation.id],
+  );
+
+  res.render("topic", {
+    topic,
+    verses,
+  });
+});
+
+router.get("/chronological", async function (req, res) {
+  const chapters = await db.query(
+    "select id, name, chronological_order from chapter order by chronological_order",
+  );
+
+  res.render("index", { chapters });
+});
+
 
 /* GET home page */
 router.get("/", async function (req, res) {

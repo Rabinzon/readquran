@@ -22,12 +22,16 @@ html(lang="ru" data-bs-theme="dark")
     link(href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap", rel="stylesheet")
     link(rel='stylesheet', href='/stylesheets/main.css')
 
-  body.d-flex.flex-column.justify-content-between
+  body.d-flex.flex-column.justify-content-between.min-vh-100
     nav.navbar.navbar-expand-lg.bg-body-tertiary
-      .container
+      .container-xxl
         a.navbar-brand(href='/')
           i.bi.bi-book-half.pe-2
           span.d-none.d-md-inline.fw-bold Перевод Корана
+        .navbar-nav.me-auto.d-none.d-md-flex.flex-row
+          a(href='/').nav-link.px-1 Суры
+          a(href='/topic').nav-link.px-1 Темы
+          a(href='/chronological').nav-link.px-2 Хронология
         .navbar-form
           select.form-select(aria-label='Default select example').js-translation-select.d-flex.ms-auto
             option(value='1') Кулиев Э. Р.
@@ -42,17 +46,23 @@ html(lang="ru" data-bs-theme="dark")
               button.btn.btn-outline-success(type='submit')
                 i.bi.bi-search
 
-    main.container
+    main.container.flex-fill
       button.btn.btn-fixed.js-to-top-btn.d-none.btn-dark.btn-sm вверх
       block content
-    footer.footer.p-3
-      .container
-        .d-flex.align-items-center.justify-content-between
-          .text-center
-            span.text-muted
-              small=`2017-${currentYear}`
-                | &nbsp;
+
+    footer
+      nav.navbar.navbar-expand-lg.bg-body-tertiary
+        .container-xxl
+            ul.navbar-nav.me-auto.flex-row
+              li.nav-item.px-2
+                a.nav-link(aria-current='page' href='/') Суры
+              li.nav-item.px-2
+                a.nav-link(href='/topic') Темы
+              li.nav-item.px-2
+                a.nav-link(href='/chronological') Хронология
+            span.navbar-text.ps-2
+              small.text-muted=`2017-${currentYear}`
+                | &nbsp;| &nbsp;
               a(href='/')
                 small readquran.ru
-
     script(src='/javascripts/main.js')

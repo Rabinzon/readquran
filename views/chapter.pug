@@ -4,7 +4,7 @@ block content
   .row.justify-content-md-center
     .col-md-8.col-sm-12
       .my-3
-        h1(style="word-break: break-all;").mb-0: small= 'Сура ' + chapter.id + ' «' + chapter.name + '»'
+        h1(style="word-break: break-all;").mb-0='Сура ' + chapter.id + ' «' + chapter.name + '»'
         small: i хронолоческий порядок суры &nbsp;
           !=chapter.chronological_order
       p.lead=translation.author

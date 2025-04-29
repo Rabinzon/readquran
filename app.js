@@ -3,12 +3,15 @@ const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
+const compression = require("compression");
 
 const router = require("./routes/index");
 const setLocals = require("./middleware/setLocals");
 const setCurrentTranslation = require("./middleware/setCurrentTranslation");
 
 const app = express();
+
+app.use(compression());
 
 // view engine setup
 // eslint-disable-next-line no-undef

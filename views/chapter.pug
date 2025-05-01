@@ -1,5 +1,8 @@
 extends ./layouts/application.pug
 
+block head
+  title=`${chapter.id}. Сура «${chapter.name}»`
+
 block content
   .row.justify-content-md-center
     .col-md-8.col-sm-12

@@ -1,20 +1,8 @@
 extends ./layouts/application.pug
 
 block content
-  h5.mt-4 Сура
-    span=` ${chapter.id} `
-    | &laquo;
-    span=chapter.name
-    | &raquo;
-  .row
-    .col: .pl-0
-      each verse in verses || []
-        p.my-1
-          p.lead=verse.author
-          p.p-1.text-muted
-            - var href = `/${verse.chapter_id}#ayat-${verse.position}`
-            a(href=href).text-decoration-none.link-body-emphasis
-              span.badge.text-bg-secondary=verse.chapter_id + ':' + verse.position
-              span
-                | &nbsp;
-                =verse.text
+  h3.mt-4
+    strong=`Аят ${chapter.id}:${verses[0].position}`
+
+  .row: .col
+      +verses(true)

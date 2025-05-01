@@ -1,27 +1,14 @@
 extends ./layouts/application.pug
 
+block head
+  title=`${topic.id}. Тема «${topic.name}»`
+
 block content
   .row.justify-content-md-center
     .col-md-8.col-sm-12
-      .my-3
-        h1(style="word-break: break-all;").mb-0: small= 'Тема ' + topic.id + ' «' + topic.name + '»'
-      p.lead=translation.author
+      .my-3.text-center
+        h1.mb-0: strong=`${topic.id}. Тема «${topic.name}»`
+        small: i=`Автор перевода ${translation.author} `
 
-  .row
-    .col-md-8.col-sm-12.m-auto
-      each verse in verses || []
-        p.ayat(id='ayat-' + verse.position)
-          a(href=`/${verse.chapter_id}:${verse.position}`): span.badge.text-bg-secondary=verse.chapter_id + ':' + verse.position
-          span
-            | &nbsp;
-            =verse.text
-    //nav.pt-4
-    //  ul.pagination.d-flex.justify-content-center
-    //      if chapter.id > 1
-    //        li.page-item: a.page-link(href=`/${chapter.id-1}`)
-    //          | &laquo;
-    //          =` сура ${chapter.id-1}`
-    //      if chapter.id < 114
-    //        li.page-item: a.page-link(href=`/${chapter.id+1}`)
-    //            =`сура ${chapter.id+1} `
-    //            | &raquo;
+  .row: .col
+      +verses

@@ -1,8 +1,10 @@
 extends ./layouts/application.pug
+block head
+  title=`Найдено ${verses.length} аятов по запросу «${query}»`
 
 block content
   h3.mt-4.mb-3
     strong=`Найдено ${verses.length} аятов по запросу «${query}»`
 
   .row: .col
-    +verses
+    +verses()

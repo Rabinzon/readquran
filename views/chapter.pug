@@ -3,27 +3,18 @@ extends ./layouts/application.pug
 block content
   .row.justify-content-md-center
     .col-md-8.col-sm-12
-      .my-3
-        h1(style="word-break: break-all;").mb-0='Сура ' + chapter.id + ' «' + chapter.name + '»'
-        small: i хронолоческий порядок суры &nbsp;
-          !=chapter.chronological_order
-      p.lead=translation.author
+      .mb-4.mt-4.text-center
+        h1.mb-0: strong(style="word-break: break-all;")=`${chapter.id}. Сура «${chapter.name}»`
+        small: i=`Перевод ${translation.author} `
+        small: i=`Хронолоческий порядок ${chapter.chronological_order}.`
+        h5.mt-2 С именем Аллаха, Милостивого, Милосердного!
 
   .row
     .col-md-8.col-sm-12.m-auto
-      each verse in verses || []
-        p.ayat(id='ayat-' + verse.position)
-          a(href=`/${verse.chapter_id}:${verse.position}`): span.badge.text-bg-secondary=verse.chapter_id + ':' + verse.position
-          span
-            | &nbsp;
-            =verse.text
-    nav.pt-4
+      +verses
+    nav.pt-3.pb-5
       ul.pagination.d-flex.justify-content-center
           if chapter.id > 1
-            li.page-item: a.page-link(href=`/${chapter.id-1}`)
-              | &laquo;
-              =` сура ${chapter.id-1}`
+            li.page-item: a.page-link(href=`/${chapter.id-1}`) Предыдущая сура
           if chapter.id < 114
-            li.page-item: a.page-link(href=`/${chapter.id+1}`)
-                =`сура ${chapter.id+1} `
-                | &raquo;
+            li.page-item: a.page-link(href=`/${chapter.id+1}`) Следующая сура

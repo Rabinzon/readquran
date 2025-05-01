@@ -1,4 +1,10 @@
 doctype html
+mixin verses
+  p
+    each verse in verses || []
+      span.verse(id='ayat-' + verse.position)
+        a(href=`/${verse.chapter_id}:${verse.position}`): span=verse.chapter_id + ':' + verse.position
+        span=verse.text
 html(lang="ru" data-bs-theme="dark")
   head
     title= 'Перевод Священного Корана'

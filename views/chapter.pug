@@ -8,13 +8,14 @@ block content
     .col-md-8.col-sm-12
       .mb-4.mt-4.text-center
         h1.mb-0: strong=`${chapter.id}. Сура «${chapter.name}»`
-        small: i=`Перевод ${translation.author} `
+        small: i!=`Перевод ${translation.author}&nbsp;`
         small: i!=`Хронолоческий порядок&nbsp;${chapter.chronological_order}.`
         h5.mt-2 С именем Аллаха, Милостивого, Милосердного!
 
   .row
     .col-md-8.col-sm-12.m-auto
-      +verses
+      +verses()
+
     nav.pt-3.pb-5
       ul.pagination.d-flex.justify-content-center
           if chapter.id > 1

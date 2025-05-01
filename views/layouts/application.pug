@@ -1,13 +1,17 @@
-doctype html
-mixin verses
+mixin verses(showAuthor)
   p
     each verse in verses || []
-      span.verse(id='ayat-' + verse.position)
-        a(href=`/${verse.chapter_id}:${verse.position}`): span=verse.chapter_id + ':' + verse.position
+      if showAuthor && verse.author
+        span.lead.mt-3.mb-2.d-block=verse.author
+
+      span.verse(id=`ayat-${verse.position}`)
+        a(href=`/${verse.chapter_id}:${verse.position}`): span=`${verse.chapter_id}:${verse.position}`
         span=verse.text
+
+doctype html
+
 html(lang="ru" data-bs-theme="dark")
   head
-    title= 'Перевод Священного Корана'
     meta(name='description' content='Сайт, посвященный переводам Священного Корана на русский язык. Читайте Коран, ищете аяты')
     meta(name='keywords' content='Коран, читать коран, коран хронологический порядок, читать коран онлайн, коран на русском, коран чтение')
     meta(name='description' content='Сайт для удобного чтения Корана в хронологическом порядке. Доступны переводы И. Ю. Крачковского, Э. Р. Кулиева.')
@@ -26,6 +30,7 @@ html(lang="ru" data-bs-theme="dark")
     link(rel="preconnect", href="https://fonts.gstatic.com", crossorigin)
     link(href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap", rel="stylesheet")
     link(rel='stylesheet', href='/stylesheets/main.css')
+    block head
 
   body.d-flex.flex-column.justify-content-between.min-vh-100
     nav.navbar.navbar-expand-lg.bg-body-tertiary
@@ -39,11 +44,11 @@ html(lang="ru" data-bs-theme="dark")
           a(href='/chronological').nav-link.px-2 Хронология
         .navbar-form
           select.form-select(aria-label='Default select example').js-translation-select.d-flex.ms-auto
-            option(value='1') Кулиев Э. Р.
-            option(value='2') И.Ю. Крачковский
-            option(value='3') Абу Адель
+            option(value='1') Кулиев Э. Р. О.
+            option(value='2') Крачковский И. Ю.
+            option(value='3') Абу Адель.
             option(value='4') Османов М. Н. О.
-            option(value='5') И. В. Порохова
+            option(value='5') Порохова В. М.
 
           form(action="/search").d-flex
             .input-group
@@ -55,7 +60,7 @@ html(lang="ru" data-bs-theme="dark")
       button.btn.btn-fixed.js-to-top-btn.d-none.btn-dark.btn-sm вверх
       block content
 
-    footer
+    footer.mt-5
       nav.navbar.navbar-expand-lg.bg-body-tertiary
         .container-xxl
             ul.navbar-nav.me-auto.flex-row
@@ -70,5 +75,5 @@ html(lang="ru" data-bs-theme="dark")
                 | &nbsp;| &nbsp;
               a(href='/')
                 small readquran.ru &nbsp;
-                small=version
+                small=`v${version}`
     script(src='/javascripts/main.js')

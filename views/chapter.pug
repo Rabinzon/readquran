@@ -4,9 +4,9 @@ block content
   .row.justify-content-md-center
     .col-md-8.col-sm-12
       .mb-4.mt-4.text-center
-        h1.mb-0: strong(style="word-break: break-all;")=`${chapter.id}. Сура «${chapter.name}»`
+        h1.mb-0: strong=`${chapter.id}. Сура «${chapter.name}»`
         small: i=`Перевод ${translation.author} `
-        small: i=`Хронолоческий порядок ${chapter.chronological_order}.`
+        small: i!=`Хронолоческий порядок&nbsp;${chapter.chronological_order}.`
         h5.mt-2 С именем Аллаха, Милостивого, Милосердного!
 
   .row

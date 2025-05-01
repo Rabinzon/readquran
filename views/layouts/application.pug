@@ -13,14 +13,13 @@ html(lang="ru" data-bs-theme="dark")
     meta(name='description' content='Сайт для удобного чтения Корана в хронологическом порядке. Доступны переводы И. Ю. Крачковского, Э. Р. Кулиева.')
     meta(name='keywords' content='Коран, читать коран, коран хронологический порядок, читать коран онлайн, коран на русском, коран чтение')
     meta(name='viewport' content='width=device-width, initial-scale=1')
-    link(rel='apple-touch-icon', sizes='180x180', href='/assets/favicon/apple-touch-icon.png?v=wAXXEkEEYG')
-    link(rel='icon', type='image/png', sizes='32x32', href='/assets/favicon/favicon-32x32.png?v=wAXXEkEEYG')
-    link(rel='icon', type='image/png', sizes='16x16', href='/assets/favicon/favicon-16x16.png?v=wAXXEkEEYG')
-    link(rel='mask-icon', href='/assets/favicon/safari-pinned-tab.svg?v=wAXXEkEEYG', color='#5bbad5')
-    link(rel='shortcut icon', href='/assets/favicon/favicon.ico?v=wAXXEkEEYG')
-    meta(name='msapplication-TileColor', content='#da532c')
-    meta(name='msapplication-config', content='/assets/favicon/browserconfig.xml?v=wAXXEkEEYG')
-    meta(name='theme-color', content='#ffffff')
+
+    link(rel='icon' type='image/png' href='/favicon/favicon-96x96.png' sizes='96x96')
+    link(rel='icon' type='image/svg+xml' href='/favicon/favicon.svg')
+    link(rel='shortcut icon' href='/favicon/favicon.ico')
+    link(rel='apple-touch-icon' sizes='180x180' href='/favicon/apple-touch-icon.png')
+    link(rel='manifest' href='/favicon/site.webmanifest')
+
     link(rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css")
     link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7' crossorigin='anonymous')
     link(rel="preconnect", href="https://fonts.googleapis.com")
@@ -32,8 +31,8 @@ html(lang="ru" data-bs-theme="dark")
     nav.navbar.navbar-expand-lg.bg-body-tertiary
       .container-xxl
         a.navbar-brand(href='/')
-          i.bi.bi-book-half.pe-2
-          span.d-none.d-sm-inline.fw-bold Перевод Корана
+          img(src='/images/logo.svg', alt='Logo', width='24', height='24')
+          span.ps-1.d-none.d-sm-inline.fw-bold Перевод Корана
         .navbar-nav.me-auto.d-none.d-md-flex.flex-row
           a(href='/').nav-link.px-1 Суры
           a(href='/topic').nav-link.px-1 Темы

@@ -32,10 +32,27 @@ mark {
   background-color: RGBA(var(--bs-warning-rgb),var(--bs-bg-opacity,1))!important;
 }
 
-.ayat {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  margin-bottom: 0;
+.verse {
+  display: flex;
+  gap: 8px;
+}
+
+.verse a {
+  min-width: 50px;
+  background: rgb(209 209 209 / 20%);
+  text-align: center;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.verse:first-child a {
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+}
+
+.verse:last-child a {
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
 }
 
 .selected {

@@ -5,6 +5,7 @@
 body {
   font-family: 'PT Sans', sans-serif;
   font-size: 18px;
+  hyphens: auto;
 }
 
 a {
@@ -67,6 +68,8 @@ mark {
 .navbar-form {
   display: flex;
   gap: 8px;
+  min-width: 0;
+  flex: 1;
 }
 
 .navbar-form select {

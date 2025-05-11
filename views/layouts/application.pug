@@ -3,9 +3,10 @@ mixin verses(showAuthor)
     each verse in verses || []
       if showAuthor && verse.author
         span.lead.mt-3.mb-2.d-block=verse.author
-
-      span.verse(id=`ayat-${verse.position}`)
-        a(href=`/${verse.chapter_id}:${verse.position}`): span=`${verse.chapter_id}:${verse.position}`
+      - var href = showAuthor ? `/${verse.chapter_id}#verse-${verse.position}` : `/${verse.chapter_id}:${verse.position}`
+      - var onclick = showAuthor ? `changeTranslatorCookie(${verse.author_id});` : undefined;
+      span.verse(id=`verse-${verse.position}` onclick=onclick)
+        a(href=href): span=`${verse.chapter_id}:${verse.position}`
         span=verse.text
 
 doctype html

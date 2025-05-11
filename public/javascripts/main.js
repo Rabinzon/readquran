@@ -3,14 +3,17 @@ function getCookie(name) {
   if (match) return match[2];
 }
 
+function changeTranslatorCookie(translatorId) {
+  document.cookie = `translationId=${translatorId}`;
+}
+
 (function () {
   const selectElement = document.querySelector('.js-translation-select');
 
   selectElement.value = getCookie('translationId') || 1;
 
   selectElement.addEventListener('change', ({ target }) => {
-    document.cookie = `translationId=${target.value}`;
-
+    changeTranslatorCookie(target.value);
     window.location.reload();
   });
 

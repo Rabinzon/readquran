@@ -86,7 +86,7 @@ router.get("/:params", async function (req, res) {
   if (versePosition) {
     const verses = await db.query(
       `
-    select text, position, chapter_id, t.author from verse
+    select text, position, chapter_id, t.author, t.id as author_id from verse
     join translation t on t.id = translation_id
     where chapter_id = $1 and position = $2
     order by translation_id;

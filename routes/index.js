@@ -72,6 +72,11 @@ router.get("/", async function (req, res) {
   res.render("index", { chapters });
 });
 
+/* GET about page */
+router.get("/about", function (req, res) {
+  res.render("about");
+});
+
 /* GET chapter or verse page */
 router.get("/:params", async function (req, res) {
   const params = req.params.params.split(":");

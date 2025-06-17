@@ -62,6 +62,7 @@ mark {
 .navbar img {
   position: relative;
   top: -2px;
+  filter: grayscale(0.6);
 }
 
 .navbar-form {

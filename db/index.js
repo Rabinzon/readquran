@@ -13,4 +13,5 @@ module.exports = {
 
     return rows;
   },
+  connect: () => pool.connect(),
 };

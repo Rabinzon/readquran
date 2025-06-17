@@ -2,6 +2,7 @@ extends ./layouts/application.pug
 
 block head
   title=`${topic.id}. Тема «${topic.name}»`
+  meta(name='description' content=`${verses[0].chapter_id}:${verses[0].position}. ${verses[0].text}`)
 
 block content
   .row.justify-content-md-center

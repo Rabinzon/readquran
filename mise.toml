@@ -22,17 +22,17 @@ description = "Start the application"
 
 # Task: docker/up
 [tasks.docker_up]
-run = "docker-compose up -d"
+run = "docker compose up -d"
 description = "Start Docker containers in detached mode"
 
 # Task: docker/down
 [tasks.docker_down]
-run = "docker-compose down"
+run = "docker compose down"
 description = "Stop Docker containers"
 
 # Task: docker/drop
 [tasks.docker_drop]
-run = "docker-compose down --volumes"
+run = "docker compose down --volumes"
 description = "Stop Docker containers and remove volumes"
 
 # Task: migration/up
